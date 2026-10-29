@@ -1,0 +1,7 @@
+name: astrbot_plugin_activity_control
+display_name: 活跃度控制
+desc: 群聊活跃/潜水/睡眠三态控制：定时读群、@/唤醒词即时回复，并正确识别 owner
+version: v1.0.0
+author: DC
+repo: https://github.com/hutaodantuiren/astrbot_plugin_activity_control
+astrbot_version: ">=4.9.0"

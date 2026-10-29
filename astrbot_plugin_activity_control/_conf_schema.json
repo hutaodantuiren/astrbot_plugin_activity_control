@@ -1,0 +1,76 @@
+{
+  "owner_source": {
+    "type": "string",
+    "description": "owner 来源。astrbot=只读 AstrBot 的 admins_id；plugin=只用本插件 owner_ids；merge=两边合并（默认，推荐）",
+    "default": "merge",
+    "options": ["merge", "astrbot", "plugin"]
+  },
+  "owner_ids": {
+    "type": "list",
+    "description": "额外/覆盖的 owner QQ 号。owner_source=plugin 时完全以这里为准；merge 时与 AstrBot admins_id 合并。",
+    "default": [],
+    "items": {
+      "type": "string"
+    }
+  },
+  "default_mode": {
+    "type": "string",
+    "description": "新群或未设置过的群默认模式。建议保持 dive（潜水），由 owner 发送 /活跃 开启。",
+    "default": "dive",
+    "options": ["dive", "active", "sleep"]
+  },
+  "interval_seconds": {
+    "type": "int",
+    "description": "活跃模式下定时读取群聊的间隔，默认 120 秒，允许范围 10-3600 秒。",
+    "default": 120
+  },
+  "wake_words": {
+    "type": "list",
+    "description": "唤醒词。活跃模式下命中会立即读取并回复；潜水/睡眠模式不会因唤醒词响应。",
+    "default": ["爱莉希雅"],
+    "items": {
+      "type": "string"
+    }
+  },
+  "wake_match": {
+    "type": "string",
+    "description": "唤醒词匹配方式：contains=包含；prefix=开头；exact=完全相等。",
+    "default": "contains",
+    "options": ["contains", "prefix", "exact"]
+  },
+  "treat_reply_as_at": {
+    "type": "bool",
+    "description": "引用/回复机器人消息时，是否等同于 @ 机器人。",
+    "default": true
+  },
+  "wake_on_at_all": {
+    "type": "bool",
+    "description": "是否把 @全体成员 也视为 @ 机器人。默认关闭，避免误触发。",
+    "default": false
+  },
+  "member_commands_in_active": {
+    "type": "bool",
+    "description": "活跃模式下是否允许普通成员使用其他插件指令。潜水/睡眠模式始终只允许 owner 指令。",
+    "default": true
+  },
+  "context_messages": {
+    "type": "int",
+    "description": "回复时最多带上最近多少条群聊记录（3-100）。",
+    "default": 30
+  },
+  "context_chars": {
+    "type": "int",
+    "description": "注入 LLM 的聊天记录最大字符数（200-12000），超出会从最旧的消息开始丢弃。",
+    "default": 4000
+  },
+  "max_message_chars": {
+    "type": "int",
+    "description": "单条群消息进入上下文前的最大字符数（50-2000）。",
+    "default": 500
+  },
+  "reply_instruction": {
+    "type": "string",
+    "description": "追加给模型的额外回复要求（可留空）。",
+    "default": ""
+  }
+}
